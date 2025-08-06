@@ -17,7 +17,7 @@ fun DefaultRadioButton(
     onSelected: Boolean,
     title: String,
     onCheck: () -> Unit,
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
 ) {
     Row (
         modifier = modifier,
