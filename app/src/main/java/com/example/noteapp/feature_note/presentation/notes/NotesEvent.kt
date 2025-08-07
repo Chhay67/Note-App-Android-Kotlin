@@ -8,5 +8,4 @@ sealed class NotesEvent {
     object ToggleOrderSection : NotesEvent()
     data class DeleteNote(val note: Note) : NotesEvent()
     object RestoreNote : NotesEvent()
-    object NavigateToAddNoteScreen : NotesEvent()
 }

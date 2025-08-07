@@ -32,7 +32,12 @@ class NotesViewModel @Inject constructor(
     fun onEvent(event: NotesEvent) {
         when (event) {
             is NotesEvent.Order -> {
-                // Handle ordering of notes
+                if (state.value.noteOrder::class == event.noteOrder::class &&
+                    state.value.noteOrder.orderType == event.noteOrder.orderType
+                ) {
+                    return
+                }
+                getNotes(event.noteOrder)
             }
             is NotesEvent.ToggleOrderSection -> {
                 _state.value = _state.value.copy(isOrderSectionVisible =  !_state.value.isOrderSectionVisible)
@@ -49,9 +54,7 @@ class NotesViewModel @Inject constructor(
                     lastDeletedNote = null
                 }
             }
-            is NotesEvent.NavigateToAddNoteScreen -> {
-                // Navigate to add note screen
-            }
+
         }
     }
 
